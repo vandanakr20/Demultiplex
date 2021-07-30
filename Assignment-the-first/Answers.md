@@ -31,6 +31,8 @@
 Uploaded.
 
 4. Pseudocode
+
+```
 Create a set of all the 24 indexes (Faster look up)
 Create a set of all the input files (Read 1, Read 2, Index 1, Index 2)
 
@@ -44,15 +46,15 @@ For loop for the indexes
 While there is a record in the input files
     read in read1, read2, index1 and index 2 record --> store in list (need indexes)
     combine index 1 and the reverse complement of index 2 with a dash between
-    set header of index1 to header with combined indexes
-    set header of index2 to header with combined indexes
+    change header of index1 in list to header with added indexes
+    change header of index2 in list to header with added indexes
 
     if there is an 'N' in either index
         write the read1 record to the read1-bad file
         write the read2 record to the read2-bad file
         continue back to the while loop
 
-    else if the average quality score of index < cutoff OR Qscore of sequence < cutoff
+    else if the average quality score of index < index_cutoff OR qscore of sequence < seq_cutoff
         write the read1 record to the read1-bad file
         write the read2 record to the read2-bad file
         continue back to the while loop
@@ -72,7 +74,8 @@ While there is a record in the input files
         write the read1 record to the read1-bad file
         write the read2 record to the read2-bad file
 
-
+For loop to close all 52 files
+```
 
 5. High level functions. For each function, be sure to include:
     1. Description/doc string
@@ -80,7 +83,7 @@ While there is a record in the input files
     3. Test examples for individual functions
     4. Return statement
 
-
+```
 covert_phred(score: string) -> int:
     '''
     This function takes a ASCII value representing the Quality score and converts it to the decimal value - 33 (Phred 33)
@@ -92,7 +95,8 @@ covert_phred(score: string) -> int:
     Expected output: 32
 
     return decimal_score
-
+```    
+```
 average_qual(qual_line: string) -> float:
     '''
     This function take a quality string and returns the average quality score of that line
@@ -104,7 +108,8 @@ average_qual(qual_line: string) -> float:
     Expected output: 36
 
     return avg_qual
-
+```
+```
 contain_N(index: string) -> int:
     '''
     This function takes a string of 2 indexes seperated with a '-' and returns the number of Ns it contains
@@ -116,7 +121,8 @@ contain_N(index: string) -> int:
     Expected output: 2
 
     return num_ns
-
+```
+```
 if_match(index: string) -> bool:
     '''
     This function takes a string of 2 indexes seperated with a '-' and returns True if they match and False is they are different 
@@ -128,7 +134,8 @@ if_match(index: string) -> bool:
     Expected output: True
 
     return match_flag
-
+```
+```
 reverse_comp(index: string) -> string
     '''
     This function takes a string of 1 index and returns a string of the reverse complement 
@@ -140,7 +147,8 @@ reverse_comp(index: string) -> string
     Expected output: GGCAAGTT
 
     return rev_comp
-
+```
+```
 if_real_index(index: string) -> bool:
     '''
     This function takes a string of 2 indexes seperated with a '-' and returns True if are both in the index set and False is they are not in the index set
@@ -152,3 +160,4 @@ if_real_index(index: string) -> bool:
     Expected output: False
 
     return real_flag
+```
