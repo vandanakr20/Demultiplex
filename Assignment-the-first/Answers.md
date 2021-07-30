@@ -17,10 +17,13 @@
 
     b. This data will be used for differential gene expression meaning that there is already an assembled genome. For the biological reads, I would use a cutoff    quality score of 20. This means that on average 1 base for every 100 will be incorrect. Our reads are 101 base pairs long so on average only 1 base will be incorrect. Even if 2 bases are wrong, the read should still align to the genome. The worst case is that something will not align so this is not a big problem. On the other hand, the indexes need to be very accurate so I would pick a cutoff score of 30, which means 1 base out of 1000 will be incorrect on average. If the indexes are sequenced incorrectly and the read is assigned to the wrong sample, that would bias your downstream results. The consequence of the indexes being wrong is much higher so that is why they should have a higher cutoff value. 
 
-    c. zcat /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz | sed -n "2~4p" | grep -F "N" | wc -l
-            3976613 indexes with an N (Index 1)
-        zcat /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz | sed -n "2~4p" | grep -F "N" | wc -l
-            3328051 indexes with an N (Index 2)
+    c. 
+    ```
+    zcat /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz | sed -n "2~4p" | grep -F "N" | wc -l
+    zcat /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz | sed -n "2~4p" | grep -F "N" | wc -l
+        3976613 indexes with an N (Index 1)
+        3328051 indexes with an N (Index 2)
+    ```
     
 ## Part 2
 1. Define the problem: The problem is that all the reads are in the same file but we want them seperated by index. The indexes are not attached to the reads, they are in a different file. Additionally, some of the indexes may be swapped. In this data, all the reads are dual indexed which means that each read should have the same barcode as the paired read. If the indexes don't match, that means the indexes were swapped. Additionally, not all the reads and indexes have great quality and we want to do some preliminary data cleaning now. 
