@@ -15,7 +15,7 @@
     2. ```Your answer here```
     3. ```Your answer here```
 
-    b. This data will be used for differential gene expression meaning that there is already an assembled genome. For the biological reads, I would use a cutoff quality score of 20. This means that on average 1 base for every 100 will be incorrect. Our reads are 101 base pairs long so on average only 1 base will be incorrect. Even if 2 bases are wrong, the read should still align to the genome. The worst case is that something will not align so this is not a big problem. On the other hand, the indexes need to be very accurate so I would pick a cutoff score of 30. If the indexes are sequenced incorrectly and the read is assigned to the wrong sample, that would bias your downstream results. The consequence of the indexes being wrong is much higher so that is why they should have a higher cutoff value. 
+    b. This data will be used for differential gene expression meaning that there is already an assembled genome. For the biological reads, I would use a cutoff    quality score of 20. This means that on average 1 base for every 100 will be incorrect. Our reads are 101 base pairs long so on average only 1 base will be incorrect. Even if 2 bases are wrong, the read should still align to the genome. The worst case is that something will not align so this is not a big problem. On the other hand, the indexes need to be very accurate so I would pick a cutoff score of 30, which means 1 base out of 1000 will be incorrect on average. If the indexes are sequenced incorrectly and the read is assigned to the wrong sample, that would bias your downstream results. The consequence of the indexes being wrong is much higher so that is why they should have a higher cutoff value. 
 
     c. zcat /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz | sed -n "2~4p" | grep -F "N" | wc -l
             3976613 indexes with an N (Index 1)
@@ -25,7 +25,7 @@
 ## Part 2
 1. Define the problem: The problem is that all the reads are in the same file but we want them seperated by index. The indexes are not attached to the reads, they are in a different file. Additionally, some of the indexes may be swapped. In this data, all the reads are dual indexed which means that each read should have the same barcode as the paired read. If the indexes don't match, that means the indexes were swapped. Additionally, not all the reads and indexes have great quality and we want to do some preliminary data cleaning now. 
 
-2. Describe output: The total output should have 52 files. For each read, there should 1 file with the swapped index reads and 1 file with non-existent indexes and bad quality indexes. There should 4 total files, 2 for read 1 and 2 for read 2. There will also be 24 files for each read, one for each index. These files will contain all the reads with matching, and good quality indexes. They will also have the indexes attached to the header of the record. There will be 24 files for read 1 and 24 files for read 2, for a total of 48 reads. 
+2. Describe output: The total output should have 52 files. For each read, there should 1 file with the swapped index reads and 1 file with non-existent indexes and bad quality indexes. There should 4 total files, 2 for read 1 and 2 for read 2. There will also be 24 files for each read, one for each index. These files will contain all the reads with matching, and good quality indexes. They will also have the indexes attached to the header of the record. There will be 24 files for read 1 and 24 files for read 2, for a total of 48 files. There should be 52 total files.  
 
 3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
 Uploaded.
@@ -41,7 +41,7 @@ For loop for the indexes
     create a read1 and read 2 file for index
     open both files for writing
 
-While there is a record in the files
+While there is a record in the input files
     read in read1, read2, index1 and index 2 record --> store in list (need indexes)
     combine index 1 and the reverse complement of index 2 with a dash between
     set header of index1 to header with combined indexes
