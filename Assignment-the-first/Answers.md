@@ -14,6 +14,8 @@
     1. Use markdown to insert your 4 histograms here.
     2. <img width="1196" alt="Index1" src="https://user-images.githubusercontent.com/83670690/127715600-65a5b341-02e3-48fe-8286-caf011fa8ba3.png">
     3. <img width="1195" alt="Index2" src="https://user-images.githubusercontent.com/83670690/127715631-ea2ba60a-2f59-4824-9b12-13e968764779.png">
+    4. <img width="1198" alt="Read1" src="https://user-images.githubusercontent.com/83670690/127721430-8f5892a9-f420-49ca-8915-58dfafa1be91.png">
+
 
 
     b. This data will be used for differential gene expression meaning that there is already an assembled genome. For the biological reads, I would use a cutoff    quality score of 20. This means that on average 1 base for every 100 will be incorrect. Our reads are 101 base pairs long so on average only 1 base will be incorrect. Even if 2 bases are wrong, the read should still align to the genome. The worst case is that something will not align so this is not a big problem. On the other hand, the indexes need to be very accurate so I would pick a cutoff score of 30, which means 1 base out of 1000 will be incorrect on average. If the indexes are sequenced incorrectly and the read is assigned to the wrong sample, that would bias your downstream results. The consequence of the indexes being wrong is much higher so that is why they should have a higher cutoff value. 
