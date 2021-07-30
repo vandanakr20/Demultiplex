@@ -15,6 +15,8 @@
     2. <img width="1196" alt="Index1" src="https://user-images.githubusercontent.com/83670690/127715600-65a5b341-02e3-48fe-8286-caf011fa8ba3.png">
     3. <img width="1195" alt="Index2" src="https://user-images.githubusercontent.com/83670690/127715631-ea2ba60a-2f59-4824-9b12-13e968764779.png">
     4. <img width="1198" alt="Read1" src="https://user-images.githubusercontent.com/83670690/127721430-8f5892a9-f420-49ca-8915-58dfafa1be91.png">
+    5. <img width="1197" alt="Read2" src="https://user-images.githubusercontent.com/83670690/127721785-3450f960-fb58-4460-aa7b-ed1476cf1d03.png">
+
 
 
 
